@@ -1,47 +1,27 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <template v-if="data">
+  <div v-for="item in data">
+  {{ item.title }}
+  </div>
+  </template>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script setup>
+import axios from 'axios'
+import { onMounted,ref } from 'vue';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+const data = ref()
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+  axios.get('https://api-prod.wisburg.com/v1/article')
+       .then(res=>{
+        data.value = res.data.data.title
+       }).then(res=>{
+        console.log(res)
+  })
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
+</script>
+
+<style>
+
 </style>
