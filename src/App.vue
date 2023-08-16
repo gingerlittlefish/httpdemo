@@ -1,10 +1,11 @@
 <template>
   <div class="box">
+  <button @click="switchList">切换列表</button>
     <articleDetail :id="articleId"></articleDetail>
-    <list ref="compList" :size="3" :page="pageNum" @alertName="showTitle" @showArticle="handleShowArticle"></list>
+    <list ref="compList" :size="3" :page="pageNum" @alertName="showTitle" @showArticle="handleShowArticle" @click="showList" v-if="show"></list>
+    <!-- <video @click="showList" v-if="!show"></video> -->
     <button @click="prev">上一页</button><button @click="next">下一页</button>
   </div>
-
 
 </template>
 /**
@@ -16,11 +17,17 @@
 <script setup>
 import articleDetail from './components/articleDetail.vue'
 import list from './components/list.vue'
+import viedeo from './components/video.vue'
 import { onMounted,ref } from 'vue';
 const randomSize = ref(Math.round(Math.random()*10))
 const compList = ref()
 const pageNum = ref(1)
 const articleId = ref()
+
+
+function showList() {
+  this.show = !this.show
+};
 
 function prev(){
   if (pageNum.value > 1) {
@@ -38,6 +45,10 @@ function showTitle(n) {
 
 function handleShowArticle(param) {
   articleId.value = param
+}
+
+function switchList(){
+
 }
 
 </script>
