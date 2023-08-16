@@ -36,7 +36,7 @@
   const emit = defineEmits(['alertName','showArticle'])
   
   function changePage(page){
-    axios.get(`https://api-prod.wisburg.com/v1/article/flow`,{
+    axios.get(`https://api-prod.wisburg.com/v1/video/list`,{
           params:{
               limit:props.size,
               page:page
@@ -56,7 +56,7 @@
 
   watch(()=>props.page,(newValue)=>{
     // changePage(newValue)
-    // axios.get(`https://api-prod.wisburg.com/v1/article/flow`,{
+    // axios.get(`https://api-prod.wisburg.com/v1/video/list`,{
     //       params:{
     //           limit:props.size,
     //           page:newValue
