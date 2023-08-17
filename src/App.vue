@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-  <button @click="switchList">切换列表</button>
+  <div class="tab">文章</div><div class="tab">视频</div>
     <articleDetail :id="articleId"></articleDetail>
     <list ref="compList" :size="3" :page="pageNum" @alertName="showTitle" @showArticle="handleShowArticle"></list>
     <video></video>
@@ -54,6 +54,23 @@ function switchList(){
 <style scoped>
 .box{
   margin: 0 auto;
+  background-color: #6b6969;
   
 }
+
+.tab {
+  display: inline-block;
+  margin: 10px 20px;
+  text-align: center;
+  width: 30px;
+  height: 15px;
+  text-align: center;
+  border: 1px solid #000;
+  }
+  
+  body {
+    background-color: #6b6969;
+  }
+
+
 </style>
