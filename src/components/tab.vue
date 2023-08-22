@@ -1,15 +1,26 @@
 <template>
-   <div class="tab">
-    <div class="tab-item">文章</div>
-    <div class="tab-item">视频</div>
-   </div>
+    <div>
+      <div class="tab-buttons">
+        <button v-for="(tab, index) in tabs" :key="index" @click="currentTab = index">{{ tab }}</button>
+      </div>
+      <div class="tab-content">
+        <div v-for="(tab, index) in tabs" :key="index" v-show="currentTab === index">
+          <p>{{ tab }}</p>
+        </div>
+      </div>
+    </div>
+  </template>
 
-   <div class="content">
-   </div>
-</template>
+<script>
+import { ref } from 'vue';
 
-<script setup>
-
+export default {
+  setup() {
+    const tabs = ['文章', '视频'];
+    const currentTab = ref(0);
+    return { tabs, currentTab };
+  }
+};
 </script>
 
 <style>
