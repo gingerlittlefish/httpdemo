@@ -1,9 +1,9 @@
 <template>
   <div class="box">
-  <div class="tab">文章</div><div class="tab">视频</div>
+    <tab></tab>
     <articleDetail :id="articleId"></articleDetail>
     <list ref="compList" :size="3" :page="pageNum" @alertName="showTitle" @showArticle="handleShowArticle"></list>
-    <video></video>
+    
     <button @click="prev">上一页</button><button @click="next">下一页</button>
   </div>
 
@@ -18,6 +18,7 @@
 import articleDetail from './components/articleDetail.vue'
 import list from './components/list.vue'
 import video from './components/video.vue'
+import tab from './components/tab.vue'
 import { onMounted,ref } from 'vue';
 const randomSize = ref(Math.round(Math.random()*10))
 const compList = ref()
@@ -58,15 +59,6 @@ function switchList(){
   
 }
 
-.tab {
-  display: inline-block;
-  margin: 10px 20px;
-  text-align: center;
-  width: 30px;
-  height: 15px;
-  text-align: center;
-  border: 1px solid #000;
-  }
   
   body {
     background-color: #6b6969;
